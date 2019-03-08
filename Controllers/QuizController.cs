@@ -13,8 +13,39 @@ namespace TestApplication.Controllers
     [Route("api/[controller]")]
     public class QuizController : Controller
     {
+        //Region RESTful conventions methods
+        /// <summary>
+        /// GET: api/quiz/{}id
+        /// Retrieves the quiz with the given id
+        /// </summary>
+        /// <param name="id">The Id of the existing quiz</param>
+        /// <returns>The quiz with given ID</returns>
+        [HttpGet("{id}")]
+        public IActionResult Get(int id)
+        {
+            //create a sample quiz to match the given request
+            var v = new QuizViewModel()
+            {
+                Id = id,
+                Title = String.Format("Sample quiz with id {0}", id),
+                Description = "Not a real quiz: it's jsut a sample!",
+                CreatedDate = DateTime.Now,
+                LastModifiedDate = DateTime.Now
+            };
 
-        //Get api /quiz method
+            //output the result in Json format
+            return new JsonResult(v, new JsonSerializerSettings() {Formatting = Formatting.Indented });
+        }
+
+        #region 
+        //region for attribute-based routing methods
+        /// <summary>
+        /// Get: api/quiz/latest
+        /// Retrieves the {num} latest quizzes
+        /// </summary>
+        /// <param name="num">The number of quizzes to retrieve</param>
+        /// <returns>The latest quizzes</returns>
+
         [HttpGet("Latest/{num}")]
         public IActionResult Latest(int num = 10)
         {
@@ -47,6 +78,7 @@ namespace TestApplication.Controllers
                 sampleQuizzes, new JsonSerializerSettings() { Formatting = Formatting.Indented}
             );
         }
+        #endregion 
 
         ///<summary>
         /// GET: api/quiz/Bytitle
@@ -77,5 +109,22 @@ namespace TestApplication.Controllers
             );
         }
 
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        [HttpPost]
+        public IActionResult Post(QuizViewModel m)
+        {
+            throw new NotImplementedException();
+        }
+
+        [HttpPut]
+        public IActionResult Put(QuizViewModel m)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

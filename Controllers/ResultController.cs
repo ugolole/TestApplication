@@ -43,5 +43,27 @@ namespace TestApplication.Controllers
 
             return new JsonResult(sampleResult, new JsonSerializerSettings() {Formatting = Formatting.Indented }); 
        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult Get(int id)
+        {
+            return Content("Not implemented (yet)!");
+        }
+        [HttpPost]
+        public IActionResult Post(ResultViewModel m)
+        {
+            throw new NotImplementedException();
+        }
+        [HttpPut]
+        public IActionResult Put(ResultViewModel m)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

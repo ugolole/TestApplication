@@ -46,5 +46,27 @@ namespace TestApplication.Controllers
                 sampleQuestions, new JsonSerializerSettings(){ Formatting = Formatting.Indented}
             );
         }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult Get(int id)
+        {
+            return Content("Not implemented (yet)!");
+        }
+        [HttpPost]
+        public IActionResult Post(QuestionViewModel m)
+        {
+            throw new NotImplementedException();
+        }
+        [HttpPut]
+        public IActionResult Put(QuestionViewModel m)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
