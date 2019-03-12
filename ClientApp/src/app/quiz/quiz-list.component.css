@@ -4,5 +4,5 @@ ul.quizzes li{
 }
 
 ul.quizzes li.selected{
-  background-image: #cccccc;
+  background-color: #cccccc;
 }
