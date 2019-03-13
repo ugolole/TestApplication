@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { QuizListComponent } from './quiz/quiz-list.component';
+import { QuizComponent } from './quiz/quiz.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { QuizListComponent } from './quiz/quiz-list.component';
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    QuizListComponent
+    QuizListComponent,
+    QuizComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
