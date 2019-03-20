@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, Inject } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { HttpClient } from "@angular/common/http";
 @Component({
@@ -10,7 +10,9 @@ import { HttpClient } from "@angular/common/http";
 export class QuizComponent {
   quiz: Quiz;
 
-  constructor(private activatedRoute: ActivatedRoute, private router: Router) {
+  constructor(private activatedRoute: ActivatedRoute,
+    private router: Router, private http: HttpClient,
+  @Inject('BASE_URL') private baseUrl : string) {
     //create an empty object from the quiz interface
     this.quiz = <Quiz>{};
 
@@ -18,7 +20,11 @@ export class QuizComponent {
     console.log(id);
 
     if (id) {
-      //TO-DO : load the quiz server-side API
+      var url = this.baseUrl + 'api/quiz/' + id;
+
+      this.http.get<Quiz>(url).subscribe(result => {
+        this.quiz = result;
+      });
     } else {
       console.log("invalide id : routing back to home ...");
       this.router.navigate(["home"]);
