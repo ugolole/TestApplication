@@ -46,7 +46,7 @@ namespace TestApplication.Controllers
         /// <param name="num">The number of quizzes to retrieve</param>
         /// <returns>The latest quizzes</returns>
 
-        [HttpGet("Latest/{num}")]
+        [HttpGet("Latest/{num:int?}")]
         public IActionResult Latest(int num = 10)
         {
             //create a list of possible quizzes
