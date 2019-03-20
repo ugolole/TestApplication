@@ -2,7 +2,7 @@ import { Component } from "@angular/core"
 
 @Component({
   selector: "pagenotfound",
-  template: "./pagenotfound.component.html"
+  templateUrl: "./pagenotfound.component.html"
 })
 
 export class PageNotFoundComponent{
