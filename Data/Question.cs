@@ -50,7 +50,7 @@ namespace TestApplication.Data
         ///<summary>
         ///A list containing all the answer related to this question.
         ///</summary>
-        public virtual List<Answer> Answer { get; set; }
+        public virtual List<Answer> Answers { get; set; }
         #endregion
     }
 }
