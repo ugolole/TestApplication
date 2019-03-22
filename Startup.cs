@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using TestApplication.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace TestApplication
 {
@@ -27,6 +29,13 @@ namespace TestApplication
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+
+            //Add the entity framework support for sql server
+            services.AddEntityFrameworkSqlServer();
+
+            //Add the application db context
+            services.AddDbContext<ApplicationDbContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
