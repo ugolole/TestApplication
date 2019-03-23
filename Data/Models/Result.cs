@@ -41,7 +41,7 @@ namespace TestApplication.Data
         public DateTime CreatedDate { get; set; }
 
         [Required]
-        public DateTime LasModifiedDate { get; set; }
+        public DateTime LastModifiedDate { get; set; }
         #endregion
 
         #region Lazy-load Properties

@@ -10,7 +10,7 @@ using TestApplication.Data;
 namespace TestApplication.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190322200706_Initial")]
+    [Migration("20190323044918_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -120,7 +120,7 @@ namespace TestApplication.Data.Migrations
 
                     b.Property<int>("Flags");
 
-                    b.Property<DateTime>("LastModifiedData");
+                    b.Property<DateTime>("LastModifiedDate");
 
                     b.Property<string>("Notes");
 
@@ -151,7 +151,7 @@ namespace TestApplication.Data.Migrations
 
                     b.Property<int>("Flags");
 
-                    b.Property<DateTime>("LasModifiedDate");
+                    b.Property<DateTime>("LastModifiedDate");
 
                     b.Property<int?>("MaxValue");
 

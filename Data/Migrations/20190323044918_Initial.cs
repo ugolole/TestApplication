@@ -41,7 +41,7 @@ namespace TestApplication.Data.Migrations
                     UserId = table.Column<string>(nullable: false),
                     ViewCount = table.Column<int>(nullable: false),
                     CreatedDate = table.Column<DateTime>(nullable: false),
-                    LastModifiedData = table.Column<DateTime>(nullable: false)
+                    LastModifiedDate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -93,7 +93,7 @@ namespace TestApplication.Data.Migrations
                     Type = table.Column<int>(nullable: false),
                     Flags = table.Column<int>(nullable: false),
                     CreatedDate = table.Column<DateTime>(nullable: false),
-                    LasModifiedDate = table.Column<DateTime>(nullable: false)
+                    LastModifiedDate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {

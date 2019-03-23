@@ -85,6 +85,19 @@ namespace TestApplication
                     spa.UseAngularCliServer(npmScript: "start");
                 }
             });
+
+            //Create a service scope to get an ApplicationDbContext instance using DI
+            using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
+            {
+                var dbContext = serviceScope.ServiceProvider.GetService<ApplicationDbContext>();
+
+                //create the Db if it doesn't exist and applies any pending migration.
+                dbContext.Database.Migrate();
+
+                //seed the Db
+                DbSeeder.Seed(dbContext);
+            }
+
         }
     }
 }

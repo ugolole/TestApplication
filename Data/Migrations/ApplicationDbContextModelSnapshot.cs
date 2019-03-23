@@ -118,7 +118,7 @@ namespace TestApplication.Data.Migrations
 
                     b.Property<int>("Flags");
 
-                    b.Property<DateTime>("LastModifiedData");
+                    b.Property<DateTime>("LastModifiedDate");
 
                     b.Property<string>("Notes");
 
@@ -149,7 +149,7 @@ namespace TestApplication.Data.Migrations
 
                     b.Property<int>("Flags");
 
-                    b.Property<DateTime>("LasModifiedDate");
+                    b.Property<DateTime>("LastModifiedDate");
 
                     b.Property<int?>("MaxValue");
 
