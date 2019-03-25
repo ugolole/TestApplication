@@ -1,6 +1,7 @@
 import { Component, Input, Inject } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { HttpClient } from "@angular/common/http";
+
 @Component({
     selector: "quiz",
     templateUrl : "./quiz.component.html",
@@ -16,6 +17,9 @@ export class QuizComponent {
     //create an empty object from the quiz interface
     this.quiz = <Quiz>{};
 
+    //get the id of the current activated route once the user clicks the button
+    //this allows us to use this information to determine whether or not we can go to
+    //the next page containing the quiz information.
     var id = +this.activatedRoute.snapshot.params["id"];
     console.log(id);
 
