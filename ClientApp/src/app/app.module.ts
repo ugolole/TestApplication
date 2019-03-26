@@ -7,10 +7,10 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
-import { QuizListComponent } from './quiz/quiz-list.component';
+import { QuizListComponent } from './quiz-list/quiz-list.component';
 import { QuizComponent } from './quiz/quiz.component';
 
-import { QuizEditComponent } from './quiz/quiz-edit.component';
+import { QuizEditComponent } from './quiz-edit/quiz-edit.component';
 import { AboutComponent } from './about/about.component';
 import { LoginComponent } from './login/login.component';
 import { PageNotFoundComponent } from './pagenotfound/pagenotfound.component';

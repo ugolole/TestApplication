@@ -1,6 +1,7 @@
-import { Component, Inject, OnInit } from "@angular/core";
+import { Component, Inject } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { HttpClient } from "@angular/common/http";
+import { Quiz } from "../interfaces/quiz";
 
 
 @Component({
@@ -67,4 +68,5 @@ export class QuizEditComponent {
     this.router.navigate(["home"]);
   }
 
-}  
+}
+

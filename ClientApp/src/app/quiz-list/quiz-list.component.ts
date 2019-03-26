@@ -1,6 +1,7 @@
 import {Component, Inject, Input, OnInit } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import {Router} from "@angular/router";
+import { Quiz } from "../interfaces/quiz";
 
 @Component({
     selector: "quiz-list",
@@ -14,8 +15,6 @@ export class QuizListComponent implements OnInit{
     selectedQuiz :  Quiz;
     quizzes : Quiz[];
     
-
-  
   constructor(private http: HttpClient,
     @Inject('BASE_URL') private baseUrl: string,
   private router : Router) {   

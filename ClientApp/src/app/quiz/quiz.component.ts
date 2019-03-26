@@ -1,6 +1,7 @@
 import { Component, Input, Inject } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { HttpClient } from "@angular/common/http";
+import { Quiz } from "../interfaces/quiz";
 
 @Component({
     selector: "quiz",
