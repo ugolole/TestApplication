@@ -63,9 +63,13 @@ namespace TestApplication
                     context.Context.Response.Headers["Expires"] =
                     Configuration["StaticFiles:Headers:Expires"];
                 }
-            }); //allows you to use static files like .html or .js files.
+            }); 
+            
+            //allows you to use static files like .html or .js files.
             app.UseSpaStaticFiles();
 
+            //setup the use of mvc and specify default routing paths for both controller and 
+            //starting page "index".
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
