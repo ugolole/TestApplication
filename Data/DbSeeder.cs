@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TestApplication.Data
 {
-    //Automatically seed new data.
+    //Automatically seed new data using well written code
     public class DbSeeder
     {
         #region Public Methods
