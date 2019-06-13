@@ -55,7 +55,8 @@ namespace TestApplication.Data
                 CreatedDate = createdDate,
                 LastModifiedDate = lastModifiedDate
             };
-
+            
+            //adding user solice
             var user_Solice = new ApplicationUser()
             {
                 Id = Guid.NewGuid().ToString(),
@@ -65,6 +66,7 @@ namespace TestApplication.Data
                 LastModifiedDate = lastModifiedDate
             };
 
+            //adding user vodan
             var user_Vodan = new ApplicationUser()
             {
                 Id = Guid.NewGuid().ToString(),
