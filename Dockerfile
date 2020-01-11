@@ -1,58 +1,19 @@
-# FROM microsoft/dotnet:2.1.1-aspnetcore-runtime AS base
-
-# WORKDIR /app
-# EXPOSE 80
-# EXPOSE 443
-
-# FROM microsoft/dotnet:2.1.1-sdk AS build
-
-# WORKDIR /src
-# COPY ["TestApplication.csproj", "TestApplication/"]
-# COPY ["TestApplication.Domain/TestApplication.Domain.csproj", "TestApplication.Domain/"]
-# RUN dotnet restore "TestApplication.csproj"
-# COPY . .
-# WORKDIR "/src/TestApplication"
-# RUN dotnet build "TestApplication.csproj" -c Release -o /app
-
-# FROM build AS publish
-# RUN dotnet publish "TestApplication.csproj" -c Release -o /app
-
-
-
-# FROM node as nodebuilder
-# RUN mkdir /usr/src/app
-# WORKDIR /usr/src/app
-# ENV PATH /usr/src/app/node_modules/.bin:$PATH
-# COPY TestApplication/ClientApp/package.json /usr/src/app/package.json
-# RUN npm install
-# COPY TestApplication/ClientApp/. /usr/src/app
-# RUN npm run build
-
-# FROM base AS final
-# WORKDIR /app
-# COPY --from=publish /app .
-# RUN mkdir -p /app/ClientApp/dist
-# COPY --from=nodebuilder /usr/src/app/dist/. /app/ClientApp/dist/
-# ENTRYPOINT ["dotnet", "TestApplication.dll"]
-
-
-FROM mcr.microsoft.com/dotnet/core/aspnet:2.1.1-buster-slim AS base
+FROM mcr.microsoft.com/dotnet/core/sdk:2.1 AS build-env
 WORKDIR /app
-EXPOSE 80
-EXPOSE 443
-
-FROM mcr.microsoft.com/dotnet/core/sdk:2.1.1-buster AS build
-WORKDIR /src
-COPY ["TestApplication/TestApplication.csproj", "TestApplication/"]
-RUN dotnet restore "TestApplication/TestApplication.csproj"
-COPY . .
-WORKDIR "/src/TestApplication"
-RUN dotnet build "TestApplication.csproj" -c Release -o /app/build
-
-FROM build AS publish
-RUN dotnet publish "TestApplication.csproj" -c Release -o /app/publish
-
-FROM base AS final
+# Copy csproj and restore as distinct layers
+COPY *.csproj ./
+RUN dotnet restore
+# Setup NodeJs
+RUN apt-get update && \
+    apt-get install -y wget && \
+    apt-get install -y gnupg2 && \
+    wget -qO- https://deb.nodesource.com/setup_10.x | bash - && \
+    apt-get install -y build-essential nodejs
+# Copy everything else and build
+COPY . ./
+RUN dotnet publish -c Release -o out
+# Build runtime image
+FROM mcr.microsoft.com/dotnet/core/aspnet:2.1
 WORKDIR /app
-COPY --from=publish /app/publish .
+COPY --from=build-env /app/out .
 ENTRYPOINT ["dotnet", "TestApplication.dll"]
