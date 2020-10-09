@@ -1,5 +1,5 @@
 # TestApplication
-ASP.NET with angular project example which explores away connect .NET backend with angular frontend.
+ASP.NET with angular project example which explores ways of connecting .NET backend with angular frontend.
 
 # Requirements.
 - .Net 4.0 or greater
