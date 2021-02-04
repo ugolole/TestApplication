@@ -1,0 +1,16 @@
+﻿version: "3.3"
+services: 
+    api:
+        container_name: "testapplication"
+        build: .
+        ports:
+            - "7000:80"
+        networks:
+            default:
+                ipv4_address:  172.18.0.8
+        restart: on-failure 
+
+networks:
+  default:
+    external:
+      name: docker-network
